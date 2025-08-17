@@ -1,0 +1,13 @@
+{
+    "name": "daan0101/accessify",
+    "description": "A lightweight and flexible Laravel package for managing license codes.",
+    "type": "library",
+    "require": {
+        "php": "^8.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Daan0101\\Accessify\\": "src/"
+        }
+    }
+}
