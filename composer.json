@@ -9,5 +9,12 @@
         "psr-4": {
             "Daan0101\\Accessify\\": "src/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Daan0101\\Accessify\\AccessifyServiceProvider"
+            ]
+        }
     }
 }
