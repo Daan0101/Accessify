@@ -3,6 +3,7 @@
 namespace Daan0101\Accessify;
 
 use Illuminate\Support\ServiceProvider;
+use Daan0101\Accessify\Console\Install;
 
 class AccessifyServiceProvider extends ServiceProvider
 {
@@ -16,6 +17,12 @@ class AccessifyServiceProvider extends ServiceProvider
         $this->app->singleton(Accessify::class, function ($app) {
             return new Accessify();
         });
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                Install::class,
+            ]);
+        }
     }
 
     /**
@@ -25,6 +32,6 @@ class AccessifyServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // You can add boot logic here if needed
+        //
     }
 }
