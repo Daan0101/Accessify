@@ -15,7 +15,14 @@ class Accessify
 
     public static function Generate(): string
     {
-        $code = Str::random(config('accessify.length', 30));
+        $method = config('accessify.generation_method', 'random');
+
+        if ($method === 'uuid') {
+            $code = (string) Str::uuid();
+        } else {
+            $code = Str::random(config('accessify.length', 30));
+        }
+
         \DB::table('accessify_codes')->insert([
             'id' => Str::uuid(),
             'code' => $code,
