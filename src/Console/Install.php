@@ -32,6 +32,9 @@ class Install extends Command
                 '--tag' => 'accessify-migrations',
             ]);
             $this->call('migrate');
+            $this->call('vendor:publish', [
+                '--tag' => 'accessify-config',
+            ]);
             $this->info('Installing Accessify...');
         }
 
