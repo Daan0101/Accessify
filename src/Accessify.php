@@ -16,7 +16,12 @@ class Accessify
     public static function Generate(): string
     {
         $code = Str::random(25);
-        \Log::info('Code generated: ' . $code);
+        \DB::table('accessify_codes')->insert([
+            'code' => $code,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
         return $code;
     }
 }
