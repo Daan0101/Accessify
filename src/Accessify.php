@@ -25,4 +25,10 @@ class Accessify
 
         return $code;
     }
+
+    public static function Validate(string $code): bool
+    {
+        $exists = \DB::table('accessify_codes')->where('code', $code)->exists();
+        return $exists;
+    }
 }
