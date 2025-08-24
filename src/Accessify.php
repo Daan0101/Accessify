@@ -2,6 +2,7 @@
 
 namespace Daan0101\Accessify;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use \Illuminate\Support\Str;
 
@@ -26,6 +27,7 @@ class Accessify
         \DB::table('accessify_codes')->insert([
             'id' => Str::uuid(),
             'code' => $code,
+            'status' => 'active',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -35,11 +37,22 @@ class Accessify
 
     public static function Validate(string $code): bool
     {
-        $exists = \DB::table('accessify_codes')->where('code', $code)->exists();
-        if ($exists) {
-            \DB::table('accessify_codes')->where('code', $code)->delete();
+        $license = DB::table('accessify_codes')
+            ->where('code', $code)
+            ->where('status', 'active')
+            ->first();
+
+        if ($license) {
+            DB::table('accessify_codes')
+                ->where('id', $license->id)
+                ->update([
+                    'status' => 'redeemed',
+                    'redeemed_at' => now(),
+                    'updated_at' => now(),
+                ]);
             return true;
         }
+        
         return false;
     }
 }

@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('accessify_codes', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('code')->unique();
+            $table->enum('status', ['active', 'redeemed', 'revoked', 'expired'])->default('active');
+            $table->timestamp('redeemed_at')->nullable();
             $table->timestamps();
         });
     }
