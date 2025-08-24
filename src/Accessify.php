@@ -36,11 +36,10 @@ class Accessify
     public static function Validate(string $code): bool
     {
         $exists = \DB::table('accessify_codes')->where('code', $code)->exists();
-
-        return $exists;
-        
         if ($exists) {
             \DB::table('accessify_codes')->where('code', $code)->delete();
+            return true;
         }
+        return false;
     }
 }
