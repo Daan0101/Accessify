@@ -1,4 +1,4 @@
-# Laravel License
+# Accessify
 
 A simple and lightweight Laravel package to manage software license codes.
 
