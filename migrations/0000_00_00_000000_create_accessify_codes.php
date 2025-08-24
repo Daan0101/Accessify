@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('accessify_codes', function (Blueprint $table) {
-            $table->text();
+            $table->text('id')->unique();
             $table->string('code')->unique();
             $table->timestamps();
         });
