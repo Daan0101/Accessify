@@ -15,7 +15,7 @@ class Accessify
 
     public static function Generate(): string
     {
-        $code = Str::random(25);
+        $code = Str::random(config('accessify.length', 30));
         \DB::table('accessify_codes')->insert([
             'id' => Str::uuid(),
             'code' => $code,
