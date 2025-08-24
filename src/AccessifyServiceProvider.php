@@ -32,6 +32,8 @@ class AccessifyServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->publishes([
+            __DIR__ . '/../migrations/0000_00_00_000000_create_accessify_codes.php' => database_path('migrations/0000_00_00_000000_create_accessify_codes.php'),
+        ], 'accessify-migrations');
     }
 }

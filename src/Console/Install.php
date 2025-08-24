@@ -28,6 +28,9 @@ class Install extends Command
     public function handle(): int
     {
         $this->info('Installing Accessify...');
+        $this->call('vendor:publish', [
+            '--tag' => 'accessify-migrations',
+        ]);
 
         //
 
