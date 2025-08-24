@@ -12,10 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('accessify_codes', function (Blueprint $table) {
-            $table->text('id')->unique();
-            $table->text('code')->unique();
-            $table->text('created_at');
-            $table->text('updated_at');
+            $table->uuid('id')->primary();
+            $table->string('code')->unique();
+            $table->timestamps();
         });
     }
 
