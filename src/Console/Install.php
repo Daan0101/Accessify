@@ -31,6 +31,7 @@ class Install extends Command
             $this->call('vendor:publish', [
                 '--tag' => 'accessify-migrations',
             ]);
+            $this->call('migrate');
             $this->info('Installing Accessify...');
         }
 

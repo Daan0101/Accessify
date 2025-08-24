@@ -17,6 +17,7 @@ class Accessify
     {
         $code = Str::random(25);
         \DB::table('accessify_codes')->insert([
+            'id' => Str::uuid(),
             'code' => $code,
             'created_at' => now(),
             'updated_at' => now(),
