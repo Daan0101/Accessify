@@ -34,5 +34,11 @@ Validate a license
 use Daan0101\Accessify\Accessify;
 
 $code = 'a-random-code';
-Accessify::Validate($code);
+
+if (!Accessify::Validate($code)) {
+    throw \Illuminate\Validation\ValidationException::withMessages([
+        'code' => 'The provided access code is invalid.',
+    ]);
+}
+
 ```
