@@ -1,6 +1,6 @@
 # Accessify
 
-A simple and lightweight Laravel package to manage software license codes.
+A simple and lightweight Laravel package that helps you control who can access your application.
 
 ## Installation
 
